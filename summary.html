@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Pin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        * {
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        html {
+            color: #888;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        body {
+            left: 50%;
+            margin: -43px 0 0 -150px;
+            position: absolute;
+            top: 30%;
+            width: 300px;
+        }
+
+        h1 {
+            color: #555;
+            font-size: 2em;
+            font-weight: 400;
+        }
+
+        p {
+            line-height: 1.2;
+        }
+
+        @media only screen and (max-width: 270px) {
+
+            body {
+                margin: 10px auto;
+                position: static;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+    <img src="http://www.gautam.cc/404robot.png">
+    <h1 id="title"><b>404</b>. That's an error.</h1><br />
+    <p id="content">Sorry, but the page you were trying to view does not exist or has been moved.</p>
+
+    <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://cloud.github.com/downloads/jaubourg/jquery-jsonp/jquery.jsonp-2.4.0.min.js"></script>
+    <script type="text/javascript">
+    var url = window.location.pathname;
+    console.log(url);
+
+    $.getJSON('https://pin-ytl20luvjp.firebaseio.com' + url + '.json', function(data) {
+      // $("#title").text(data);
+
+      location.href = data;
+
+      // $.ajax({
+      //   type: "GET",
+      //   url: "//clipped.me/algorithm/clippedapi.php?url="+data,
+      //   dataType: "jsonp",
+      //   success: function(summary) {
+      //     $("#title").text(JSON.parse(summary).title);
+      //   }
+      // });
+
+      // $.getJSON('//clipped.me/algorithm/clippedapi.php?url='+data+'?callback=?', function(summary) {
+      //   // console.log(summary.title);
+      //   var jsonString = JSON.stringify(summary);
+      //   var parsed = JSON.parse(jsonString);
+      //   $("#title").text(jsonString);
+      //   // $("#content").text(JSON.stringify(summary.summary));
+      // });
+
+    });
+
+
+    </script>
+</body>
+</html>
+<!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->
